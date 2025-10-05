@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-03-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+  <lightning-card title="Patent Timeline">
+    <template if:true={timeline}>
+      <ul class="slds-timeline">
+        <template for:each={timeline} for:item="item">
+          <li key={item.recordId} class="slds-timeline__item">
+            <div class="slds-timeline__item__detail">
+              <p class="slds-text-body_regular">
+                <a data-record-id={item.recordId} href="javascript:void(0);" onclick={handleOpenRecord}>
+                  {item.eventDate} — {item.type}: {item.title} ({item.status})
+                </a>
+              </p>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </template>
+    <template if:true={error}>
+      <div class="slds-text-color_error">Error loading timeline</div>
+    </template>
+  </lightning-card>
+</template>
